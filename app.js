@@ -21,8 +21,15 @@ app.get("/", function(req, res) {
   res.render("home",{startingContent: homeStartingContent});
 });
 
+//About Route
+app.get("/about", function(req, res) {
+  res.render("about",{aboutContent: aboutContent});
+});
 
-
+//Contact Route
+app.get("/contact", function(req, res) {
+  res.render("contact",{contactContent: contactContent});
+});
 
 
 
