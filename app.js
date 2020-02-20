@@ -38,12 +38,12 @@ app.get("/compose", function(req, res) {
   res.render("compose");
 });
 
-
-
-
-
-
-
+//Post Compose Route
+app.post("/compose", function(req, res){
+  const item = req.body.postTitle;
+  console.log(item);
+  res.redirect("compose");
+});
 
 
 
