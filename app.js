@@ -17,11 +17,14 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-var posts = [];
+let posts = [];
 
 //Root Route
 app.get("/", function(req, res) {
-  res.render("home",{startingContent: homeStartingContent});
+  res.render("home", {
+    startingContent: homeStartingContent,
+    posts: posts
+    });
 });
 
 //About Route
@@ -45,8 +48,9 @@ app.post("/compose", function(req, res){
     title: req.body.postTitle,
     content: req.body.postBody
   };
+
   posts.push(post);
-  console.log(posts);
+
   res.redirect("/");
 
 });
