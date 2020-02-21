@@ -27,6 +27,11 @@ app.get("/", function(req, res) {
     });
 });
 
+//Posts Route
+app.get("/posts/:postName", function(req, res){
+    console.log(req.params.postName);
+});
+
 //About Route
 app.get("/about", function(req, res) {
   res.render("about",{aboutContent: aboutContent});
