@@ -14,7 +14,9 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(express.static("public"));
 
 let posts = [];
@@ -24,22 +26,21 @@ app.get("/", function(req, res) {
   res.render("home", {
     startingContent: homeStartingContent,
     posts: posts
-    });
-});
-
-//Posts Route
-app.get("/posts/:postName", function(req, res){
-    console.log(req.params.postName);
+  });
 });
 
 //About Route
 app.get("/about", function(req, res) {
-  res.render("about",{aboutContent: aboutContent});
+  res.render("about", {
+    aboutContent: aboutContent
+  });
 });
 
 //Contact Route
 app.get("/contact", function(req, res) {
-  res.render("contact",{contactContent: contactContent});
+  res.render("contact", {
+    contactContent: contactContent
+  });
 });
 
 //Compose Route
@@ -48,12 +49,11 @@ app.get("/compose", function(req, res) {
 });
 
 //Post Compose Route
-app.post("/compose", function(req, res){
+app.post("/compose", function(req, res) {
   const post = {
     title: req.body.postTitle,
     content: req.body.postBody
   };
-
 
 
   posts.push(post);
@@ -62,6 +62,19 @@ app.post("/compose", function(req, res){
 
 });
 
+//Posts Route
+app.get("/posts/:postName", function(req, res) {
+  const requestedTitle = req.params.postName;
+
+  posts.forEach(function(post) {
+    const storedTitle = post.title;
+
+    if (storedTitle === requestedTitle) {
+      console.log("Match Found!");
+    }
+
+  });
+});
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
