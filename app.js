@@ -17,9 +17,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-
-
-
+var posts = [];
 
 //Root Route
 app.get("/", function(req, res) {
@@ -47,16 +45,12 @@ app.post("/compose", function(req, res){
     title: req.body.postTitle,
     content: req.body.postBody
   };
+  posts.push(post);
+  console.log(posts);
+  res.redirect("/");
 
 });
 
-/*
-app.post("/compose", function(req, res){
-  const item = req.body.postTitle;
-  console.log(item);
-  res.redirect("compose");
-});
-*/
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
