@@ -10,9 +10,9 @@
 
     <p> <%= startingContent %> </p>
 
-    <% for(var i=0; posts.length>i; i++){ %>
-    <%    console.log(posts[i].title); %>
-    <% }; %>
+    <% posts.forEach(function(post){ %>
+    <%    console.log(post.title); %>
+    <% }); %>
 
 
   </body>
