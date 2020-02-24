@@ -56,6 +56,9 @@ app.post("/compose", function(req, res) {
     content: req.body.postBody
   };
 
+var length = 3;
+var myString = "ABCDEFG";
+var myTruncatedString = myString.substring(0,length);
 
   posts.push(post);
 
